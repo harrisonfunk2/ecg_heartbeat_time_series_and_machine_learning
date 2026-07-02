@@ -7,5 +7,5 @@ Repository files:
 |---|---|
 | `arima.ipynb` | TimeSeries and ARIMA modeling |
 | `forest_ml.ipynb` | Random Forest Machine Learning Classification |
-| `writeup.html` | Entire report, findings and code |
+| `writeup.pdf` | Entire report, findings and code |
 | `final.ipynb` | Code used for report |
