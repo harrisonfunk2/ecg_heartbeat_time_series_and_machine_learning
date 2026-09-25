@@ -312,7 +312,7 @@ def main(plot=True, test_model=False):
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
-    with mlflow.start_run(run_name = 'Stratified model'):
+    with mlflow.start_run(run_name = 'Base model'):
         mlflow.log_params({
             'num_epochs': num_epochs,
             'lr': lr,
