@@ -2,13 +2,14 @@ import pandas as pd
 import numpy as np
 import copy
 
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 
 
 import torch
 import torch.nn as nn
-from torch.utils.data import DataLoader, Dataset, random_split
+from torch.utils.data import DataLoader, Dataset, Subset
 from torchmetrics.classification import (MulticlassAccuracy,
                                          MulticlassPrecision,
                                          MulticlassRecall,
@@ -18,15 +19,16 @@ from torchmetrics.classification import (MulticlassAccuracy,
 import mlflow
 
 
-
 def validation_split(dataset, val_size = 0.2, random_seed= 123):
-    val_length = int(len(dataset) * val_size)
-    train_length = len(dataset) - val_length
-    train_dataset, val_dataset = random_split(dataset, 
-                                              [train_length, val_length], 
-                                              generator=torch.Generator().manual_seed(random_seed))
+    labels = dataset.labels
+    indices = np.arange(len(labels))
+    train_indices, val_indices = train_test_split(indices, 
+                                                  test_size=val_size, 
+                                                  random_state=random_seed, 
+                                                  stratify=labels)
+    train_dataset = Subset(dataset, train_indices)
+    val_dataset = Subset(dataset, val_indices)
     return train_dataset, val_dataset
-
 
 
 
@@ -310,7 +312,7 @@ def main(plot=True, test_model=False):
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
-    with mlflow.start_run(run_name = 'Baseline model'):
+    with mlflow.start_run(run_name = 'Stratified model'):
         mlflow.log_params({
             'num_epochs': num_epochs,
             'lr': lr,
