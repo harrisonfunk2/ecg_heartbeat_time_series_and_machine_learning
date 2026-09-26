@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ECG Heartbeat Classifier</title>
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js">
+    </script>
+</head>
+
+
+<body>
+
+    <main>
+
+        <h1>ECG Heartbeat Classifier</h1>
+
+
+        <canvas
+            id="ecgCanvas"
+            width="900"
+            height="350">
+        </canvas>
+
+
+        <section id="results">
+
+            <div>
+                <span>Prediction</span>
+                <strong id="prediction">—</strong>
+            </div>
+
+            <div>
+                <span>Confidence</span>
+                <strong id="confidence">—</strong>
+            </div>
+
+            <div>
+                <span>True Class</span>
+                <strong id="trueLabel">—</strong>
+            </div>
+
+        </section>
+
+
+        <section id="probabilityPanel">
+
+            <h2>Class Probabilities</h2>
+
+            <div id="probabilityBars"></div>
+
+        </section>
+
+
+        <p id="status">
+            Loading model...
+        </p>
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

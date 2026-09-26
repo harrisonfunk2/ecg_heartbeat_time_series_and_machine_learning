@@ -1,0 +1,218 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #ffffff;
+
+    color: #000000;
+}
+
+
+main {
+    width: min(950px, 92%);
+
+    margin: 0 auto;
+
+    padding: 50px 0;
+}
+
+
+/* -----------------------------
+   Title
+----------------------------- */
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 35px;
+
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+
+/* -----------------------------
+   ECG plot
+----------------------------- */
+
+#ecgCanvas {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    background: #ffffff;
+
+    border: 1px solid #bdbdbd;
+
+    margin-bottom: 30px;
+}
+
+
+/* -----------------------------
+   Prediction summary
+----------------------------- */
+
+#results {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 30px;
+
+    padding: 20px 0;
+
+    border-top:
+        1px solid #d0d0d0;
+
+    border-bottom:
+        1px solid #d0d0d0;
+}
+
+
+#results div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+#results span {
+    font-size: 0.9rem;
+
+    color: #555555;
+}
+
+
+#results strong {
+    font-size: 1.15rem;
+
+    font-weight: 500;
+
+    color: #000000;
+}
+
+
+/* -----------------------------
+   Probability panel
+----------------------------- */
+
+#probabilityPanel {
+    margin-top: 35px;
+}
+
+
+#probabilityPanel h2 {
+    margin-bottom: 20px;
+
+    font-size: 1.1rem;
+
+    font-weight: 500;
+}
+
+
+.probability-row {
+    display: grid;
+
+    grid-template-columns:
+        150px
+        1fr
+        60px;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 12px;
+}
+
+
+.probability-label {
+    font-size: 0.9rem;
+}
+
+
+.probability-bar-container {
+    height: 10px;
+
+    background: #e6e6e6;
+
+    overflow: hidden;
+}
+
+
+.probability-bar {
+    height: 100%;
+
+    background: #000000;
+
+    transition:
+        width 0.5s ease;
+}
+
+
+.probability-value {
+    text-align: right;
+
+    font-size: 0.85rem;
+}
+
+
+/* -----------------------------
+   Status
+----------------------------- */
+
+#status {
+    margin-top: 25px;
+
+    font-size: 0.85rem;
+
+    color: #666666;
+}
+
+
+/* -----------------------------
+   Mobile
+----------------------------- */
+
+@media (max-width: 700px) {
+
+    main {
+        padding: 30px 0;
+    }
+
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+
+    #results {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .probability-row {
+        grid-template-columns:
+            105px
+            1fr
+            48px;
+
+        gap: 8px;
+    }
+}
