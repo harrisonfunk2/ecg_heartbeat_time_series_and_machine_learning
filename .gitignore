@@ -9,3 +9,5 @@ mlruns/
 mlflow.db
 
 test.ipynb
+
+deployment/
